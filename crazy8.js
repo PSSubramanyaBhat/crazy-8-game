@@ -14,8 +14,7 @@ class Deck {
         let count = 0;
         for (let i = 0; i < this.cards.length; i++) {
             let j = i + 1;
-            // let j = i;
-            // this.cards[i] = i+1;
+            
             this.cards[0] = "Club-" + 1;
             if ((i + 1) % 13 === 0) {
                 count++;
@@ -82,22 +81,18 @@ class Eights {
     constructor() {
         this.one = new Player();
         this.two = new Player();
-
         this.player = new Player();
-        // this.currentPlayer = new Player();
-
+        
         this.drawPile = new Hand().emptyArray;
         this.discardPile = new Hand().emptyArray;
 
         let deck = new Deck();
         this.drawPile = deck.shuffle();
         this.countRounds = 0;
-        //abcd
+        
     }
 
     drawFromPile() {
-        // console.log("The Draw pile for Crazy Eight:");
-        // console.log(this.drawPile);
         if (this.drawPile.isEmpty) {
             console.log("-----DRAW PILE is empty\n-----");
             console.log("-----RESHUFFELLING DISCARD PILE into DRAW PILE-----");
@@ -140,11 +135,7 @@ class Eights {
         }
         if (topDiscardedCard.includes("Spades-")) {
             checkCondition = "Spades-";
-        }
-
-        
-        
-        
+        }       
 
         //IMP PART (Done to prevent string -> obj convertion)
         /*checkCondition = topDiscardedCard.split("-")[0];
@@ -156,14 +147,11 @@ class Eights {
             if (this.player === this.one) {
                 for (let i of this.one.hand) {
                     if (i.includes(checkCondition)) {
-                        console.log("*************************THE CHECK CONDITION IS:\n" + checkCondition + "\n\n");
-                        // console.log("THE TOP CARD FOR DRAWING IS:                    "+topDiscardedCard);
-                        // console.log("THE CHECK CONDITION IS:                    "+checkCondition);
+                        console.log("*************************THE CHECK CONDITION IS:*************************\n" + checkCondition + "\n\n");
                         flag = 1;
                         let pos = this.one.hand.indexOf(i);
                         let discardedCard = this.one.hand.splice(pos, 1);
                         this.discardPile.push(discardedCard);
-                        // break;
                         flag = 0;
                         checkCondition = "";
                         topDiscardedCard = "";
@@ -175,14 +163,11 @@ class Eights {
             if (this.player === this.two) {
                 for (let i of this.two.hand) {
                     if (i.includes(checkCondition)) {
-                        console.log("*************************THE CHECK CONDITION IS:\n" + checkCondition + "\n\n");
-                        // console.log("THE TOP CARD FOR DRAWING IS:                    "+topDiscardedCard);
-                        // console.log("THE CHECK CONDITION IS:                    "+checkCondition);
+                        console.log("*************************THE CHECK CONDITION IS:*************************\n" + checkCondition + "\n\n");
                         flag = 1;
                         let pos = this.two.hand.indexOf(i);
                         let discardedCard = this.two.hand.splice(pos, 1);
                         this.discardPile.push(discardedCard);
-                        // break;
                         flag = 0;
                         checkCondition = "";
                         topDiscardedCard = "";
@@ -234,9 +219,7 @@ class Eights {
             checkCondition = "-King";
         }
 
-        console.log("*************************THE CHECK CONDITION IS:\n"+checkCondition+"\n\n");
-
-        
+        // console.log("*************************THE CHECK CONDITION IS:\n"+checkCondition+"\n\n");
 
         //IMP PART (Done to prevent string -> obj convertion)
         /*checkCondition = topDiscardedCard.split("-")[1];
@@ -247,14 +230,11 @@ class Eights {
             if (this.player === this.one) {
                 for (let i of this.one.hand) {
                     if (i.includes(checkCondition)) {
-                        console.log("*************************THE CHECK CONDITION IS:\n" + checkCondition + "\n\n");
-                        // console.log("THE TOP CARD FOR DRAWING IS:                    "+topDiscardedCard);
-                        // console.log("THE CHECK CONDITION IS:                    "+checkCondition);
+                        console.log("*************************THE CHECK CONDITION IS:*************************\n" + checkCondition + "\n\n");
                         flag = 1;
                         let pos = this.one.hand.indexOf(i);
                         let discardedCard = this.one.hand.splice(pos, 1);
                         this.discardPile.push(discardedCard);
-                        // break;
                         flag = 0;
                         checkCondition = "";
                         topDiscardedCard = "";
@@ -266,14 +246,11 @@ class Eights {
             if (this.player === this.two) {
                 for (let i of this.two.hand) {
                     if (i.includes(checkCondition)) {
-                        console.log("*************************THE CHECK CONDITION IS:\n" + checkCondition + "\n\n");
-                        // console.log("THE TOP CARD FOR DRAWING IS:                    "+topDiscardedCard);
-                        // console.log("THE CHECK CONDITION IS:                    "+checkCondition);
+                        console.log("*************************THE CHECK CONDITION IS:*************************\n" + checkCondition + "\n\n");
                         flag = 1;
                         let pos = this.two.hand.indexOf(i);
                         let discardedCard = this.two.hand.splice(pos, 1);
                         this.discardPile.push(discardedCard);
-                        // break;
                         flag = 0;
                         checkCondition = "";
                         topDiscardedCard = "";
@@ -283,28 +260,27 @@ class Eights {
             }
 
 
-            // for (let i of this.player.hand) {
-            //     if (i.includes(checkCondition)) {
-            //         flag = 1;
-            //         let pos = this.player.hand.indexOf(i);
-            //         let discardedCard = this.player.hand.splice(pos,1);
-            //         this.discardPile.push(discardedCard);
-            //         break;
-            //     }
-            // }
+            /*
+            for (let i of this.player.hand) {
+                if (i.includes(checkCondition)) {
+                    flag = 1;
+                    let pos = this.player.hand.indexOf(i);
+                    let discardedCard = this.player.hand.splice(pos,1);
+                    this.discardPile.push(discardedCard);
+                    break;
+                }
+            }
+            */
         }
 
         if (flag === 0) {
             if (this.player === this.one) {
                 for (let i of this.one.hand) {
                     if (i.includes("-8")) {
-                        // console.log("THE TOP CARD FOR DRAWING IS:                    "+topDiscardedCard);
-                        // console.log("THE CHECK CONDITION IS:                    8");
                         flag = 1;
                         let pos = this.one.hand.indexOf(i);
                         let discardedCard = this.one.hand.splice(pos, 1);
                         this.discardPile.push(discardedCard);
-                        // break;
                         flag = 0;
                         checkCondition = "";
                         topDiscardedCard = "";
@@ -316,13 +292,10 @@ class Eights {
             if (this.player === this.two) {
                 for (let i of this.two.hand) {
                     if (i.includes("-8")) {
-                        // console.log("THE TOP CARD FOR DRAWING IS:                    "+topDiscardedCard);
-                        // console.log("THE CHECK CONDITION IS:                    8");
                         flag = 1;
                         let pos = this.two.hand.indexOf(i);
                         let discardedCard = this.two.hand.splice(pos, 1);
                         this.discardPile.push(discardedCard);
-                        // break;
                         flag = 0;
                         checkCondition = "";
                         topDiscardedCard = "";
@@ -331,39 +304,31 @@ class Eights {
                 }
             }
 
-
-
-
-            // for (let i of this.player.hand) {
-            //     if (i.includes("-8")) {
-            //         flag = 1;
-            //         let pos = this.player.hand.indexOf(i);
-            //         let discardedCard = this.player.hand.splice(pos,1);
-            //         this.discardPile.push(discardedCard);
-            //         break;
-            //     }
-            // }
+            /*
+            for (let i of this.player.hand) {
+                if (i.includes("-8")) {
+                    flag = 1;
+                    let pos = this.player.hand.indexOf(i);
+                    let discardedCard = this.player.hand.splice(pos,1);
+                    this.discardPile.push(discardedCard);
+                    break;
+                }
+            }
+            */
         }
 
         if (flag === 0) {
             if (this.player === this.one) {
-                // console.log("THE TOP CARD FOR DRAWING IS:                    "+topDiscardedCard);
                 console.log("No Cards Matching For Player 1-----");
                 console.log("-----PLAYER 1 drawing a card from the pile-----");
                 this.one.hand.push(this.drawFromPile());
             }
             if (this.player === this.two) {
-                // console.log("THE TOP CARD FOR DRAWING IS:                    "+topDiscardedCard);
                 console.log("No Cards Matching For Player 2-----");
                 console.log("-----PLAYER 2 drawing a card from the pile-----");
                 this.two.hand.push(this.drawFromPile());
             }
         }
-
-        // flag = 0;
-        // checkCondition = "";
-
-
     }
 
     shuffleDiscardedPile(card) {
@@ -407,20 +372,22 @@ class Eights {
         }
     }
 
+
+    displayScore() {
+        
+    }
+
     playGame() {
+
+        // Initial 5 cards in the hands if 2 players displayed here
         for (let i = 0; i < 5; i++) {
             this.one.hand.push(this.drawPile.pop());
             this.two.hand.push(this.drawPile.pop());
-
         }
 
         this.discardPile.push(this.drawPile.pop());
 
-        // console.log("PLAYER ONE's TURN!!!");
-
-
-        //this.displayState(); // Initial 5 cards in the hands if 2 players displayed here
-
+        //this.displayState(); 
 
         // Player player = one;
         // this.player = new Player();
@@ -437,15 +404,18 @@ class Eights {
         }
 
         // // display the final score
-        // this.one.displayScore();
-        // this.two.displayScore();
+        
         if (this.player === this.one) {
-            console.log("No cards left with PLayer 2\n\n");
-            console.log("PLAYER TWO WINSSSSSSSSSSSSSSSSSSSSSSSSS!!!");
+            console.log("No cards left with PLayer 2\n");
+            console.log("PLAYER TWO WINS THE CRAZY EIGHT GAME!!!\n");
+            console.log("The score of player 1 is:\n");
+            // this.one.displayScore();
         }
         if (this.player === this.two) {
             console.log("No cards left with PLayer 1\n\n");
-            console.log("PLAYER ONE WINSSSSSSSSSSSSSSSSSSSSSSSSS!!!");
+            console.log("PLAYER ONE WINS THE CRAZY EIGHT GAME!!!");
+            console.log("The score of player 2 is:\n");
+            // this.two.displayScore();
         }
     }
 
@@ -456,56 +426,24 @@ class Eights {
 
 class Player {
     constructor() {
-        // this.playerName = playerName;
-        // this.hand = new Array(52);
         this.hand = new Array();
     }
 
-    // draw() {
-
+    // displayScore() {
+        
     // }
-
-    // discard() {
-
-    // }
-
-    // takeTurn(player) {
-
-    // }
-
-    // nextPLayer(player) {
-
-    // }
-
-    displayScore() {
-
-    }
 
 }
 
 
 class Hand {
     constructor() {
-        // this.emptyArray = new Array(52);
         this.emptyArray = new Array();
     }
 }
 
-// function displayState() {
-
-// }
-
 function main() {
-    // let deck1 = new Deck();
-    // console.log(deck1.shuffle());
-    // let handClass = new Hand();
     let crazyEight = new Eights();
-    // handClass.drawPile();
-
-    // Eights e = new Eights();
-
-    // crazyEight.drawFromPile();
-
     crazyEight.playGame();
 }
 
