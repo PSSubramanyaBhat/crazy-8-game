@@ -219,13 +219,6 @@ class Eights {
             checkCondition = "-King";
         }
 
-        // console.log("*************************THE CHECK CONDITION IS:\n"+checkCondition+"\n\n");
-
-        //IMP PART (Done to prevent string -> obj convertion)
-        /*checkCondition = topDiscardedCard.split("-")[1];
-        checkCondition = "-"+checkCondition;
-        console.log("YO  2   "+checkCondition);*/
-
         if (flag === 0) {
             if (this.player === this.one) {
                 for (let i of this.one.hand) {
@@ -374,7 +367,50 @@ class Eights {
 
 
     displayScore() {
-        
+        this.score = Number.parseInt(0);
+
+        this.player.hand = JSON.stringify(this.player.hand);
+
+        if (this.player.hand.includes("-Ace")) {
+            this.score += 10;
+        }
+        if (this.player.hand.includes("-2")) {
+            this.score += 2;
+        }
+        if (this.player.hand.includes("-3")) {
+            this.score += 3;
+        }
+        if (this.player.hand.includes("-4")) {
+            this.score += 4;
+        }
+        if (this.player.hand.includes("-5")) {
+            this.score += 5;
+        }
+        if (this.player.hand.includes("-6")) {
+            this.score += 6;
+        }
+        if (this.player.hand.includes("-7")) {
+            this.score += 7;
+        }
+        if (this.player.hand.includes("-8")) {
+            this.score += 20;
+        }
+        if (this.player.hand.includes("-9")) {
+            this.score += 9;
+        }
+        if (this.player.hand.includes("-10")) {
+            this.score += 10;
+        }
+        if (this.player.hand.includes("-Jack")) {
+            this.score += 10;
+        }
+        if (this.player.hand.includes("-Queen")) {
+            this.score += 10;
+        }
+        if (this.player.hand.includes("-King")) {
+            this.score += 10;
+        }
+        console.log(this.score);
     }
 
     playGame() {
@@ -387,14 +423,8 @@ class Eights {
 
         this.discardPile.push(this.drawPile.pop());
 
-        //this.displayState(); 
-
         // Player player = one;
-        // this.player = new Player();
-
-
         this.player = this.one;
-
 
         // keep playing until there's a winner
         while (!this.isDone()) {
@@ -403,19 +433,16 @@ class Eights {
             this.player = this.nextPlayer(this.player);
         }
 
-        // // display the final score
-        
+        //display the final score        
         if (this.player === this.one) {
-            console.log("No cards left with PLayer 2\n");
+            console.log("No cards left with PLayer 2");
             console.log("PLAYER TWO WINS THE CRAZY EIGHT GAME!!!\n");
-            console.log("The score of player 1 is:\n");
-            // this.one.displayScore();
+            console.log("The score of player 1 is: "+this.displayScore());
         }
         if (this.player === this.two) {
-            console.log("No cards left with PLayer 1\n\n");
-            console.log("PLAYER ONE WINS THE CRAZY EIGHT GAME!!!");
-            console.log("The score of player 2 is:\n");
-            // this.two.displayScore();
+            console.log("No cards left with PLayer 1");
+            console.log("PLAYER ONE WINS THE CRAZY EIGHT GAME!!!\n");
+            console.log("The score of player 2 is: "+this.displayScore());
         }
     }
 
@@ -427,12 +454,7 @@ class Eights {
 class Player {
     constructor() {
         this.hand = new Array();
-    }
-
-    // displayScore() {
-        
-    // }
-
+    }    
 }
 
 
