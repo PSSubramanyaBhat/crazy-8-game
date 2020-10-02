@@ -3,7 +3,6 @@
 class Deck {
     constructor() {
         this.cards = new Array(52);
-
     }
 
     randomCardPosition(min, max) {
@@ -39,8 +38,6 @@ class Deck {
 
             }
         }
-        // console.log("Deck Before Shuffeling");
-
 
         this.cards[0] = "Club-Ace";
         this.cards[13] = "Diamond-Ace";
@@ -62,17 +59,12 @@ class Deck {
         this.cards[38] = "Heart-King";
         this.cards[51] = "Spades-King";
 
-        // console.log(this.cards);
-
         for (let i = 0; i < this.cards.length; i++) {
             let randomCardValue = this.randomCardPosition(0, this.cards.length);
             let temp = this.cards[i];
             this.cards[i] = this.cards[randomCardValue];
             this.cards[randomCardValue] = temp;
         }
-        // console.log("Deck After Shuffeling");
-        // console.log(this.cards);
-
         return this.cards;
     }
 }
@@ -137,12 +129,6 @@ class Eights {
             checkCondition = "Spades-";
         }       
 
-        //IMP PART (Done to prevent string -> obj convertion)
-        /*checkCondition = topDiscardedCard.split("-")[0];
-        checkCondition = checkCondition+"-";
-        console.log("YO     "+checkCondition);*/
-
-
         if (flag === 0) {
             if (this.player === this.one) {
                 for (let i of this.one.hand) {
@@ -176,8 +162,6 @@ class Eights {
                 }
             }
         }
-
-
 
         if (topDiscardedCard.includes("-Ace")) {
             checkCondition = "-Ace";
@@ -251,19 +235,6 @@ class Eights {
                     }
                 }
             }
-
-
-            /*
-            for (let i of this.player.hand) {
-                if (i.includes(checkCondition)) {
-                    flag = 1;
-                    let pos = this.player.hand.indexOf(i);
-                    let discardedCard = this.player.hand.splice(pos,1);
-                    this.discardPile.push(discardedCard);
-                    break;
-                }
-            }
-            */
         }
 
         if (flag === 0) {
@@ -296,18 +267,6 @@ class Eights {
                     }
                 }
             }
-
-            /*
-            for (let i of this.player.hand) {
-                if (i.includes("-8")) {
-                    flag = 1;
-                    let pos = this.player.hand.indexOf(i);
-                    let discardedCard = this.player.hand.splice(pos,1);
-                    this.discardPile.push(discardedCard);
-                    break;
-                }
-            }
-            */
         }
 
         if (flag === 0) {
@@ -354,8 +313,6 @@ class Eights {
         this.discardToPile();
     }
 
-
-
     nextPlayer(player) {
         if (player === this.one) {
             return this.two;
@@ -368,59 +325,58 @@ class Eights {
 
     displayScore() {
         this.score = Number.parseInt(0);
-
-        this.player.hand = JSON.stringify(this.player.hand);
-
-        if (this.player.hand.includes("-Ace")) {
-            this.score += 10;
+        
+        for (let i of this.player.hand) {
+            if (i.includes("-Ace")) {
+                this.score += 10;
+            }
+            if (i.includes("-2")) {
+                this.score += 2;
+            }
+            if (i.includes("-3")) {
+                this.score += 3;
+            }
+            if (i.includes("-4")) {
+                this.score += 4;
+            }
+            if (i.includes("-5")) {
+                this.score += 5;
+            }
+            if (i.includes("-6")) {
+                this.score += 6;
+            }
+            if (i.includes("-7")) {
+                this.score += 7;
+            }
+            if (i.includes("-8")) {
+                this.score += 20;
+            }
+            if (i.includes("-9")) {
+                this.score += 9;
+            }
+            if (i.includes("-10")) {
+                this.score += 10;
+            }
+            if (i.includes("-Jack")) {
+                this.score += 10;
+            }
+            if (i.includes("-Queen")) {
+                this.score += 10;
+            }
+            if (i.includes("-King")) {
+                this.score += 10;
+            }
         }
-        if (this.player.hand.includes("-2")) {
-            this.score += 2;
-        }
-        if (this.player.hand.includes("-3")) {
-            this.score += 3;
-        }
-        if (this.player.hand.includes("-4")) {
-            this.score += 4;
-        }
-        if (this.player.hand.includes("-5")) {
-            this.score += 5;
-        }
-        if (this.player.hand.includes("-6")) {
-            this.score += 6;
-        }
-        if (this.player.hand.includes("-7")) {
-            this.score += 7;
-        }
-        if (this.player.hand.includes("-8")) {
-            this.score += 20;
-        }
-        if (this.player.hand.includes("-9")) {
-            this.score += 9;
-        }
-        if (this.player.hand.includes("-10")) {
-            this.score += 10;
-        }
-        if (this.player.hand.includes("-Jack")) {
-            this.score += 10;
-        }
-        if (this.player.hand.includes("-Queen")) {
-            this.score += 10;
-        }
-        if (this.player.hand.includes("-King")) {
-            this.score += 10;
-        }
+        
         console.log(this.score);
     }
 
     playGame() {
-
         // Initial 5 cards in the hands if 2 players displayed here
         for (let i = 0; i < 5; i++) {
             this.one.hand.push(this.drawPile.pop());
             this.two.hand.push(this.drawPile.pop());
         }
-
         this.discardPile.push(this.drawPile.pop());
 
         // Player player = one;
@@ -437,12 +393,14 @@ class Eights {
         if (this.player === this.one) {
             console.log("No cards left with PLayer 2");
             console.log("PLAYER TWO WINS THE CRAZY EIGHT GAME!!!\n");
-            console.log("The score of player 1 is: "+this.displayScore());
+            console.log("The score of player 1 is: ");
+            this.displayScore();
         }
         if (this.player === this.two) {
             console.log("No cards left with PLayer 1");
             console.log("PLAYER ONE WINS THE CRAZY EIGHT GAME!!!\n");
-            console.log("The score of player 2 is: "+this.displayScore());
+            console.log("The score of player 2 is: ");
+            this.displayScore();
         }
     }
 
