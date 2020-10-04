@@ -150,3 +150,13 @@ let mary = { name: "Mary", age: 29 };
 let arr9 = [ john, pete, mary ];
   
 console.log( getAverageAge(arr9) ); // 28
+
+
+/*final smaple prg in this chap*/
+function shuffle2(array) {
+    array.sort(() => Math.random() - 0.5);
+}
+  
+let arr10 = [1, 2, 3];
+shuffle2(arr10);
+console.log(arr10);
