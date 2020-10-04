@@ -126,3 +126,13 @@ let sorted = copySorted(arr7);
 
 console.log( sorted ); // CSS, HTML, JavaScript
 console.log( arr7 );
+
+
+/* Prg 8 */
+function shuffle(array) {
+    array.sort(() => Math.random() - 0.5);
+}
+  
+let arr8 = [1, 2, 3];
+shuffle(arr8);
+console.log(arr8);
