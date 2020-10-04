@@ -116,3 +116,13 @@ let arr6 = [5, 2, 1, -10, 8];
 arr6.sort().reverse();
 console.log( arr6 ); // 8, 5, 2, 1, -10
 
+/* Prg 7*/
+let arr7 = ["HTML", "JavaScript", "CSS"];
+
+function copySorted(ar7) {
+    return ar7.slice().sort();
+}
+let sorted = copySorted(arr7);
+
+console.log( sorted ); // CSS, HTML, JavaScript
+console.log( arr7 );
