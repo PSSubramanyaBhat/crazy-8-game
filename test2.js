@@ -185,3 +185,8 @@ let range = {
 for (let num of range) {
     console.log(num); // 1, then 2, 3, 4, 5
 }
+
+for (let char of "test") {
+    // triggers 4 times: once for each character
+    console.log( char ); // t, then e, then s, then t
+}
