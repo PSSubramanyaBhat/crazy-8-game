@@ -136,3 +136,17 @@ function shuffle(array) {
 let arr8 = [1, 2, 3];
 shuffle(arr8);
 console.log(arr8);
+
+/* Prg 9*/
+function getAverageAge(users) {
+    return users.reduce((prev, currentUser) => prev + currentUser.age, 0) / users.length;
+}
+  
+
+let john = { name: "John", age: 25 };
+let pete = { name: "Pete", age: 30 };
+let mary = { name: "Mary", age: 29 };
+  
+let arr9 = [ john, pete, mary ];
+  
+console.log( getAverageAge(arr9) ); // 28
