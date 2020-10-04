@@ -108,3 +108,11 @@ let arr4 = [5, 3, 8, 1];
 let filtered = filterRange(arr4, 1, 4);
 console.log( filtered ); // 3,1 (matching values)
 console.log( arr4 ); // 5,3,8,1 (not modified)
+
+
+/*Prg 6*/
+let arr6 = [5, 2, 1, -10, 8];
+// ... your code to sort it in decreasing order
+arr6.sort().reverse();
+console.log( arr6 ); // 8, 5, 2, 1, -10
+
